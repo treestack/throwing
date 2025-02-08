@@ -7,6 +7,7 @@ package de.treestack.throwing;
  * whose functional method is {@link #test(Object)}.
  *
  * @param <T> the type of the input to the predicate
+ * @param <E> the type of the exception that may be thrown
  * @since 1.0
  */
 @FunctionalInterface
@@ -17,6 +18,7 @@ public interface Predicate<T, E extends Exception> {
      *
      * @param t the input argument
      * @return {@code true} if the input argument matches the predicate,
+     * @throws E if an exception occurs
      * otherwise {@code false}
      */
     boolean test(T t) throws E;

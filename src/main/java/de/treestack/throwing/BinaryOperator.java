@@ -12,6 +12,7 @@ import java.util.function.UnaryOperator;
  * whose functional method is {@link #apply(Object, Object)}.
  *
  * @param <T> the type of the operands and result of the operator
+ * @param <E> the type of the exception that may be thrown
  *
  * @see java.util.function.BiFunction
  * @see UnaryOperator

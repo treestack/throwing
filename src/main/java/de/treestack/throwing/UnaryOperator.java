@@ -10,6 +10,7 @@ package de.treestack.throwing;
  * whose functional method is {@link #apply(Object)}.
  *
  * @param <T> the type of the operands and result of the operator
+ * @param <E> the type of the exception that may be thrown
  *
  * @see java.util.function.Function
  * @see java.util.function.BinaryOperator
