@@ -18,11 +18,11 @@ public interface Consumer<T, E extends Exception> {
     /**
      * Applies this function to the given argument.
      *
-     * @param arg the function argument
+     * @param t the function argument
      * @throws E if an exception occurs
      * @since 1.0
      */
-    void accept(T arg) throws E;
+    void accept(T t) throws E;
 
     /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original
@@ -33,12 +33,12 @@ public interface Consumer<T, E extends Exception> {
      * @param <T> the type of the input to the function
      * @since 1.0
      */
-    static <T> java.util.function.Consumer<T> unchecked(final Consumer<? super T, ?> function) {
+    static <T, E extends Exception> java.util.function.Consumer<T> unchecked(final Consumer<? super T, E> function) {
         return t -> {
             try {
                 function.accept(t);
             } catch (final Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage(), e);
             }
         };
     }

@@ -34,9 +34,10 @@ public interface Supplier<R, E extends Exception> {
      * @param function the function to lift
      * @return a function that returns an Optional
      * @param <R> the type of the result of the function
+     * @param <E> the type of the exception that may be thrown
      * @since 1.0
      */
-    static <R> java.util.function.Supplier<Optional<R>> lifted(final Supplier<? extends R, ?> function) {
+    static <R, E extends Exception> java.util.function.Supplier<Optional<R>> lifted(final Supplier<R, E> function) {
         return () -> {
             try {
                 return Optional.ofNullable(function.get());
@@ -52,15 +53,16 @@ public interface Supplier<R, E extends Exception> {
      *
      * @param function the function to wrap
      * @return a function that will throw a RuntimeException if the original function throws an exception
-     * @param <R> the type of the result of the function
+     * @param <R> the type of the result of the function.
+     * @param <E> the type of the exception that may be thrown
      * @since 1.0
      */
-    static <R> java.util.function.Supplier<R> unchecked(final Supplier<? extends R, ?> function) {
+    static <R, E extends Exception> java.util.function.Supplier<R> unchecked(final Supplier<R, E> function) {
         return () -> {
             try {
                 return function.get();
             } catch (final Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage(), e);
             }
         };
     }

@@ -19,6 +19,6 @@ class ConsumerTest {
         };
         assertThatThrownBy(() -> f.unchecked().accept(1))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
     }
 }

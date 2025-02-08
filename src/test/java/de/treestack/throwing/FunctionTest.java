@@ -39,7 +39,7 @@ public class FunctionTest {
         };
         assertThatThrownBy(() -> f.unchecked().apply(42))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
 
     }
 }

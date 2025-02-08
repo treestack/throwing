@@ -18,13 +18,13 @@ public interface BiPredicate<T1, T2, E extends Exception> {
     /**
      * Evaluates this predicate on the given argument.
      *
-     * @param t the first input argument
+     * @param t1 the first input argument
      * @param t2 the second input argument
      * @return {@code true} if the input arguments match the predicate,
      * @throws E if an exception occurs
      * otherwise {@code false}
      */
-    boolean test(T1 t, T2 t2) throws E;
+    boolean test(T1 t1, T2 t2) throws E;
 
     /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original
@@ -36,12 +36,12 @@ public interface BiPredicate<T1, T2, E extends Exception> {
      * @param <T2> the type of the input to the function
      * @since 1.0
      */
-    static <T1, T2> java.util.function.BiPredicate<T1, T2> unchecked(final BiPredicate<? super T1, ? super T2, ?> function) {
-        return (t, t2) -> {
+    static <T1, T2, E extends Exception> java.util.function.BiPredicate<T1, T2> unchecked(final BiPredicate<? super T1, ? super T2, E> function) {
+        return (t1, t2) -> {
             try {
-                return function.test(t, t2);
+                return function.test(t1, t2);
             } catch (final Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage(), e);
             }
         };
     }

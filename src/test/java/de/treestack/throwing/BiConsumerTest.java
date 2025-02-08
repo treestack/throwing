@@ -19,7 +19,7 @@ class BiConsumerTest {
         };
         assertThatThrownBy(() -> f.unchecked().accept(1, 2))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
     }
 
 

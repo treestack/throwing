@@ -21,6 +21,6 @@ public class BiPredicateTest {
         };
         assertThatThrownBy(() -> f.unchecked().test(42, "foo"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
     }
 }

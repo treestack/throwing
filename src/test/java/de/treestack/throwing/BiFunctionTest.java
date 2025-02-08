@@ -39,6 +39,6 @@ class BiFunctionTest {
         };
         assertThatThrownBy(() -> f.unchecked().apply(21, 21))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
     }
 }

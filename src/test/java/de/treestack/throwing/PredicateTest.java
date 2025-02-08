@@ -21,6 +21,6 @@ public class PredicateTest {
         };
         assertThatThrownBy(() -> f.unchecked().test(42))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
     }
 }

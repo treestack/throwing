@@ -21,12 +21,12 @@ public interface Function<T, R, E extends Exception> {
     /**
      * Applies this function to the given argument.
      *
-     * @param arg the function argument
+     * @param t the function argument
      * @return the function result
      * @throws E if an exception occurs
      * @since 1.0
      */
-    R apply(T arg) throws E;
+    R apply(T t) throws E;
 
     /**
      * Lifts a function that may throw an exception into a function that returns an Optional.
@@ -39,7 +39,7 @@ public interface Function<T, R, E extends Exception> {
      * @param <R> the type of the result of the function
      * @since 1.0
      */
-    static <T, R> java.util.function.Function<T, Optional<R>> lifted(final Function<? super T, ? extends R, ?> function) {
+    static <T, R, E extends Exception> java.util.function.Function<T, Optional<R>> lifted(final Function<? super T, R, E> function) {
         return t -> {
             try {
                 return Optional.ofNullable(function.apply(t));
@@ -59,12 +59,12 @@ public interface Function<T, R, E extends Exception> {
      * @param <R> the type of the result of the function
      * @since 1.0
      */
-    static <T, R> java.util.function.Function<T, R> unchecked(final Function<? super T, ? extends R, ?> function) {
+    static <T, R, E extends Exception> java.util.function.Function<T, R> unchecked(final Function<? super T, R, E> function) {
         return t -> {
             try {
                 return function.apply(t);
             } catch (final Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage(), e);
             }
         };
     }

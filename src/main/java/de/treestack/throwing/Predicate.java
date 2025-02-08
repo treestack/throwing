@@ -30,14 +30,15 @@ public interface Predicate<T, E extends Exception> {
      * @param function the function to wrap
      * @return a function that will throw a RuntimeException if the original function throws an exception
      * @param <T> the type of the input to the function
+     * @param <E> the type of the exception that may be thrown
      * @since 1.0
      */
-    static <T> java.util.function.Predicate<T> unchecked(final Predicate<? super T, ?> function) {
+    static <T, E extends Exception> java.util.function.Predicate<T> unchecked(final Predicate<? super T, E> function) {
         return t -> {
             try {
                 return function.test(t);
             } catch (final Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage(), e);
             }
         };
     }

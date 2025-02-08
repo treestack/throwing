@@ -1,5 +1,6 @@
 package de.treestack.throwing;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -39,6 +40,29 @@ class SupplierTest {
         };
         assertThatThrownBy(() -> f.unchecked().get())
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("java.lang.Exception: custom exception message");
+                .hasMessage("custom exception message");
     }
+
+    @Nested
+    class Boolean {
+
+        @Test
+        void unchecked_shouldHaveResult() {
+            BooleanSupplier<Exception> f = () -> true;
+            boolean result = f.unchecked().getAsBoolean();
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void unchecked_shouldThrowRuntimeException() {
+            BooleanSupplier<Exception> f = () -> {
+                throw new Exception("custom exception message");
+            };
+            assertThatThrownBy(() -> f.unchecked().getAsBoolean())
+                    .isInstanceOf(RuntimeException.class)
+                    .hasMessage("custom exception message");
+        }
+
+    }
+
 }
