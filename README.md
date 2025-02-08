@@ -50,7 +50,7 @@ To use this library, add the following dependency to your project:
 <dependency>
     <groupId>de.treestack</groupId>
     <artifactId>throwing</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
