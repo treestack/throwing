@@ -7,36 +7,36 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-public class BinaryOperatorTest {
+public class UnaryOperatorTest {
     @Test
     void lift_shouldHaveResult() {
-        BinaryOperator<Integer, Exception> f = Integer::sum;
-        Optional<Integer> result = f.lift().apply(21, 21);
+        UnaryOperator<Integer, Exception> f = (i) -> i + 1;
+        Optional<Integer> result = f.lift().apply(21);
         assertThat(result.isPresent()).isTrue();
     }
 
     @Test
     void lift_shouldBeEmpty() {
-        BinaryOperator<Integer, Exception> f = (i, j) -> {
+        UnaryOperator<Integer, Exception> f = (i) -> {
             throw new Exception("custom exception message");
         };
-        Optional<Integer> result = f.lift().apply(21, 21);
+        Optional<Integer> result = f.lift().apply(21);
         assertThat(result.isPresent()).isFalse();
     }
 
     @Test
     void unchecked_shouldHaveResult() {
-        BinaryOperator<Integer, Exception> f = Integer::sum;
-        Integer result = f.unchecked().apply(21, 21);
+        UnaryOperator<Integer, Exception> f = (i) -> i + 1;
+        Integer result = f.unchecked().apply(41);
         assertThat(result).isEqualTo(42);
     }
 
     @Test
     void unchecked_shouldThrowRuntimeException() {
-        BinaryOperator<Integer, Exception> f = (i, j) -> {
+        UnaryOperator<Integer, Exception> f = (i) -> {
             throw new Exception("custom exception message");
         };
-        assertThatThrownBy(() -> f.unchecked().apply(21, 21))
+        assertThatThrownBy(() -> f.unchecked().apply(21))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("java.lang.Exception: custom exception message");
     }

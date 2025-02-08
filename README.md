@@ -4,7 +4,7 @@
 
 Java 8 introduced the concept of functional interfaces—interfaces that have only one abstract method. It also introduced lambda expressions, which allow for concise implementations of functional interfaces.
 
-However, Java's standard java.util.function interfaces have a significant limitation: they do not handle checked exceptions. If you need to use a method that throws a checked exception within a lambda expression, you must wrap the method call in a try-catch block.
+However, Java's standard `java.util.function` interfaces have a significant limitation: they do not handle checked exceptions. If you need to use a method that throws a checked exception within a lambda expression, you must wrap the method call in a try-catch block.
 
 This leads to unnecessary boilerplate. What could have been a simple expression like this:
 
@@ -35,10 +35,12 @@ The following functional interfaces are currently provided by this project:
 - `BiConsumer`
 - `BiFunction`
 - `BinaryOperator`
+- `BiPredicate`
 - `Consumer`
 - `Function`
 - `Predicate`
 - `Supplier`
+- `UnaryOperator`
 
 ## Installation
 
@@ -48,7 +50,7 @@ To use this library, add the following dependency to your project:
 <dependency>
     <groupId>de.treestack</groupId>
     <artifactId>throwing</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -70,7 +72,7 @@ Stream.of("foo", "bar")
 
 ## Lifted functional interfaces
 
-Instead of using `unchecked()`, you can use the "lifted" functional interfaces provided by this project. These are similar to the standard functional interfaces in `java.util.function`, but instead of throwing an exception, they return an `Optional`.
+Instead of using `unchecked()`, you can use the `lifted` functional interfaces provided by this project. These are similar to the standard functional interfaces in `java.util.function`, but instead of throwing an exception, they return an `Optional`.
 
 ⚠ Note: If an exception is thrown, the lifted functional interfaces return an empty `Optional`, meaning the original exception is lost.
 
