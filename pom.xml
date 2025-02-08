@@ -6,7 +6,7 @@
 
     <groupId>de.treestack</groupId>
     <artifactId>throwing</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <name>throwing</name>
     <description>Support for checked exceptions in Java 8+ functional interfaces</description>
