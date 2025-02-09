@@ -50,12 +50,22 @@ The following functional interfaces are currently provided by this project:
 
 To use this library, add the following dependency to your project:
 
+### Maven
+
 ```xml
 <dependency>
     <groupId>de.treestack</groupId>
     <artifactId>throwing</artifactId>
     <version>1.1.1</version>
 </dependency>
+```
+
+### Gradle
+
+```kotlin
+dependencies {
+    implementation("de.treestack:throwing:1.1.1")
+}
 ```
 
 ## Unchecked exceptions
