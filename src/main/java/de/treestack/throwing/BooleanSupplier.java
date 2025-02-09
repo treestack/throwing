@@ -30,6 +30,7 @@ public interface BooleanSupplier<E extends Exception> {
      * function throws an exception.
      *
      * @param function the function to wrap
+     * @param <E> the type of the exception thrown by the function
      * @return a function that will throw a RuntimeException if the original function throws an exception
      * @since 1.0
      */

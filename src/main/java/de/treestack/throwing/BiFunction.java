@@ -40,6 +40,7 @@ public interface BiFunction<T1, T2, R, E extends Exception> {
      * @param <T1> the type of the first input to the function
      * @param <T2> the type of the second input to the function
      * @param <R> the type of the result of the function
+     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T1, T2, R, E extends Exception> java.util.function.BiFunction<T1, T2, Optional<R>> lifted(final BiFunction<? super T1, ? super T2, R, E> function) {
@@ -61,6 +62,7 @@ public interface BiFunction<T1, T2, R, E extends Exception> {
      * @param <T1> the type of the first input to the function
      * @param <T2> the type of the second input to the function
      * @param <R> the type of the result of the function
+     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T1, T2, R, E extends Exception> java.util.function.BiFunction<T1, T2, R> unchecked(final BiFunction<? super T1, ? super T2, R, E> function) {

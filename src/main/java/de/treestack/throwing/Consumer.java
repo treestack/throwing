@@ -31,6 +31,7 @@ public interface Consumer<T, E extends Exception> {
      * @param function the function to wrap
      * @return a function that will throw a RuntimeException if the original function throws an exception
      * @param <T> the type of the input to the function
+     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T, E extends Exception> java.util.function.Consumer<T> unchecked(final Consumer<? super T, E> function) {

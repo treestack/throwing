@@ -36,6 +36,7 @@ public interface BiConsumer<T1, T2, E extends Exception> {
      * @return a function that will throw a RuntimeException if the original function throws an exception
      * @param <T1> the type of the first input to the function
      * @param <T2> the type of the second input to the function
+     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T1, T2, E extends Exception> java.util.function.BiConsumer<T1, T2> unchecked(final BiConsumer<? super T1, ? super T2, E> function) {

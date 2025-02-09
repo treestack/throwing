@@ -37,6 +37,7 @@ public interface Function<T, R, E extends Exception> {
      * @return a function that returns an Optional
      * @param <T> the type of the input to the function
      * @param <R> the type of the result of the function
+     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T, R, E extends Exception> java.util.function.Function<T, Optional<R>> lifted(final Function<? super T, R, E> function) {
@@ -57,6 +58,7 @@ public interface Function<T, R, E extends Exception> {
      * @return a function that will throw a RuntimeException if the original function throws an exception
      * @param <T> the type of the input to the function
      * @param <R> the type of the result of the function
+     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T, R, E extends Exception> java.util.function.Function<T, R> unchecked(final Function<? super T, R, E> function) {
