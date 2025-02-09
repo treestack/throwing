@@ -31,8 +31,8 @@
 
     <scm>
         <url>https://github.com/treestack/throwing</url>
-        <connection>scm:git:git://github.com/treestack/throwing.git</connection>
-        <developerConnection>scm:git:ssh://github.com/treestack/throwing.git</developerConnection>
+        <connection>scm:git:git@github.com:treestack/throwing.git</connection>
+        <developerConnection>scm:git:git@github.com:treestack/throwing.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
