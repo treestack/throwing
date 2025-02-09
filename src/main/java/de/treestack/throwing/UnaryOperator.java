@@ -11,10 +11,8 @@ package de.treestack.throwing;
  *
  * @param <T> the type of the operands and result of the operator
  * @param <E> the type of the exception that may be thrown
- *
  * @see java.util.function.Function
  * @see java.util.function.BinaryOperator
-
  * @since 1.0
  */
 public interface UnaryOperator<T, E extends Exception> extends Function<T, T, E> {

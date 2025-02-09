@@ -13,7 +13,6 @@ import java.util.Optional;
  *
  * @param <R> the type of the result of the function
  * @param <E> the type of the exception that may be thrown
- *
  * @since 1.0
  */
 @FunctionalInterface
@@ -26,7 +25,8 @@ public interface Supplier<R, E extends Exception> {
      * @throws E if an exception occurs
      * @since 1.0
      */
-    @Nullable R get() throws E;
+    @Nullable
+    R get() throws E;
 
     /**
      * Lifts a function that may throw an exception into a function that returns an Optional.
@@ -34,9 +34,9 @@ public interface Supplier<R, E extends Exception> {
      * Otherwise, the returned function will return an Optional containing the result of the original function.
      *
      * @param function the function to lift
+     * @param <R>      the type of the result of the function
+     * @param <E>      the type of the exception that may be thrown
      * @return a function that returns an Optional
-     * @param <R> the type of the result of the function
-     * @param <E> the type of the exception that may be thrown
      * @since 1.0
      */
     static <R, E extends Exception> java.util.function.Supplier<Optional<R>> lifted(final Supplier<R, E> function) {
@@ -54,9 +54,9 @@ public interface Supplier<R, E extends Exception> {
      * function throws an exception.
      *
      * @param function the function to wrap
+     * @param <R>      the type of the result of the function.
+     * @param <E>      the type of the exception that may be thrown
      * @return a function that will throw a RuntimeException if the original function throws an exception
-     * @param <R> the type of the result of the function.
-     * @param <E> the type of the exception that may be thrown
      * @since 1.0
      */
     static <R, E extends Exception> java.util.function.Supplier<R> unchecked(final Supplier<R, E> function) {

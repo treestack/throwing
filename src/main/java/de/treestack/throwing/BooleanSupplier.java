@@ -1,7 +1,5 @@
 package de.treestack.throwing;
 
-import java.util.Optional;
-
 /**
  * Represents a function that accepts no arguments, produces a result
  * and (optionally) throws an Exception.
@@ -10,7 +8,6 @@ import java.util.Optional;
  * whose functional method is {@link #getAsBoolean()} )}.
  *
  * @param <E> the type of the exception that may be thrown
- *
  * @since 1.0
  */
 @FunctionalInterface
@@ -25,12 +22,12 @@ public interface BooleanSupplier<E extends Exception> {
      */
     boolean getAsBoolean() throws E;
 
-     /**
+    /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original
      * function throws an exception.
      *
      * @param function the function to wrap
-     * @param <E> the type of the exception thrown by the function
+     * @param <E>      the type of the exception thrown by the function
      * @return a function that will throw a RuntimeException if the original function throws an exception
      * @since 1.0
      */
@@ -56,4 +53,3 @@ public interface BooleanSupplier<E extends Exception> {
         return unchecked(this);
     }
 }
-

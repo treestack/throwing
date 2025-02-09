@@ -21,7 +21,7 @@ public interface Predicate<T, E extends Exception> {
      * @param t the input argument
      * @return {@code true} if the input argument matches the predicate,
      * @throws E if an exception occurs
-     * otherwise {@code false}
+     *           otherwise {@code false}
      */
     boolean test(@Nullable T t) throws E;
 
@@ -30,9 +30,9 @@ public interface Predicate<T, E extends Exception> {
      * function throws an exception.
      *
      * @param function the function to wrap
+     * @param <T>      the type of the input to the function
+     * @param <E>      the type of the exception that may be thrown
      * @return a function that will throw a RuntimeException if the original function throws an exception
-     * @param <T> the type of the input to the function
-     * @param <E> the type of the exception that may be thrown
      * @since 1.0
      */
     static <T, E extends Exception> java.util.function.Predicate<T> unchecked(final Predicate<? super T, E> function) {

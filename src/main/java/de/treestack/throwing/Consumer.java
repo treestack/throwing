@@ -11,7 +11,6 @@ import org.jspecify.annotations.Nullable;
  *
  * @param <T> the type of the input to the function
  * @param <E> the type of the exception that may be thrown
- *
  * @since 1.0
  */
 @FunctionalInterface
@@ -31,9 +30,9 @@ public interface Consumer<T, E extends Exception> {
      * function throws an exception.
      *
      * @param function the function to wrap
+     * @param <T>      the type of the input to the function
+     * @param <E>      the type of the exception thrown by the function
      * @return a function that will throw a RuntimeException if the original function throws an exception
-     * @param <T> the type of the input to the function
-     * @param <E> the type of the exception thrown by the function
      * @since 1.0
      */
     static <T, E extends Exception> java.util.function.Consumer<T> unchecked(final Consumer<? super T, E> function) {
