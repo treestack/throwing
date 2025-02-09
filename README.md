@@ -82,18 +82,29 @@ Instead of using `unchecked()`, you can use the `lifted` functional interfaces p
 
 ### Example
 
+Because the `lifted` functional interfaces return an `Optional`, you can use the `flatMap` method to chain operations that may fail.
+
 ```java
 import static de.treestack.throwing.Function.lifted;
 
 // Using a static method reference
 
-Optional<String> name = lifted(myService::findById).apply(id)
-    .map(MyEntity::getName);
+Optional<MyObject> bytes = Optional.of("some-id")
+        .flatMap(lifted(myService::findById));
 
 // Using a lambda function
 
 Optional<byte[]> bytes = Optional.of("foo")
-    .flatMap(lifted(s -> s.getBytes("UTF-8")));
+    .flatMap(lifted(s -> s.getBytes(StandardCharsets.UTF_8)));
+```
+
+If an operation is not supposed to fail, or you just don't care about the exception, you can also wrap a method reference in a `lifted` function and call it directly: 
+
+```java
+import static de.treestack.throwing.Function.lifted;
+
+Optional<String> name = lifted(myService::findById).apply(id)
+    .map(MyEntity::getName);
 ```
 
 ## License
