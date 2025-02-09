@@ -1,5 +1,9 @@
 # Throwing functional interfaces
 
+[![Maven CI/CD](https://github.com/treestack/throwing/actions/workflows/build.yml/badge.svg)](https://github.com/treestack/keycloak-api-key-auth/actions/workflows/build.yml)
+![Coverage](https://treestack-static.s3.eu-central-1.amazonaws.com/badges/jacoco.svg)
+![License](https://img.shields.io/github/license/treestack/throwing)
+
 ## Introduction
 
 Java 8 introduced the concept of functional interfaces—interfaces that have only one abstract method. It also introduced lambda expressions, which allow for concise implementations of functional interfaces.
