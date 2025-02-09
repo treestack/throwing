@@ -1,6 +1,6 @@
 # Throwing functional interfaces
 
-[![Maven CI/CD](https://github.com/treestack/throwing/actions/workflows/build.yml/badge.svg)](https://github.com/treestack/keycloak-api-key-auth/actions/workflows/build.yml)
+[![Maven CI/CD](https://github.com/treestack/throwing/actions/workflows/build.yml/badge.svg)](https://github.com/treestack/throwing/actions/workflows/build.yml)
 ![Coverage](https://treestack-static.s3.eu-central-1.amazonaws.com/badges/jacoco.svg)
 ![License](https://img.shields.io/github/license/treestack/throwing)
 
@@ -8,13 +8,13 @@
 
 Java 8 introduced the concept of functional interfaces—interfaces that have only one abstract method. It also introduced lambda expressions, which allow for concise implementations of functional interfaces.
 
-However, Java's standard `java.util.function` interfaces have a significant limitation: they do not handle checked exceptions. If you need to use a method that throws a checked exception within a lambda expression, you must wrap the method call in a try-catch block.
+However, a significant limitation of Java's standard `java.util.function` interfaces is that they do not handle checked exceptions well. If you need to use a method that throws a checked exception within a lambda expression, you must wrap the method call in a try-catch block.
 
 This leads to unnecessary boilerplate. What could have been a simple expression like this:
 
 ```java
 Stream.of("foo", "bar")
-    .map(s -> s.getBytes("UTF-8"));
+    .map(s -> s.getBytes(StandardCharsets.UTF_8));
 ```
 
 quickly turns into:
@@ -23,7 +23,7 @@ quickly turns into:
 Stream.of("foo", "bar")
         .map(s -> {
             try {
-                return s.getBytes("UTF-8");
+                return s.getBytes(StandardCharsets.UTF_8);
             } catch (UnsupportedEncodingException e) {
                 throw new RuntimeException(e);
             }
@@ -54,7 +54,7 @@ To use this library, add the following dependency to your project:
 <dependency>
     <groupId>de.treestack</groupId>
     <artifactId>throwing</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 </dependency>
 ```
 
@@ -70,7 +70,7 @@ The `unchecked()` method is a utility that wraps methods throwing checked except
 import static de.treestack.throwing.Function.unchecked;
 
 Stream.of("foo", "bar")
-    .map(unchecked(s -> s.getBytes("UTF-8")));
+    .map(unchecked(s -> s.getBytes(StandardCharsets.UTF_8)));
 ```
 
 
@@ -84,6 +84,13 @@ Instead of using `unchecked()`, you can use the `lifted` functional interfaces p
 
 ```java
 import static de.treestack.throwing.Function.lifted;
+
+// Using a static method reference
+
+Optional<String> name = lifted(myService::findById).apply(id)
+    .map(MyEntity::getName);
+
+// Using a lambda function
 
 Optional<byte[]> bytes = Optional.of("foo")
     .flatMap(lifted(s -> s.getBytes("UTF-8")));
