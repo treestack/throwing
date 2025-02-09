@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.Optional;
 
 /**
@@ -27,7 +29,7 @@ public interface BiFunction<T1, T2, R, E extends Exception> {
      * @throws E if an exception occurs
      * @since 1.0
      */
-    R apply(T1 t1, T2 t2) throws E;
+    @Nullable R apply(@Nullable T1 t1, @Nullable T2 t2) throws E;
 
     /**
      * Lifts a function that may throw an exception into a function that returns an Optional.

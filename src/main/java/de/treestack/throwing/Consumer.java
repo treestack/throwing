@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * Represents a function that accepts one argument, produces no result
  * and (optionally) throws an Exception.
@@ -22,7 +24,7 @@ public interface Consumer<T, E extends Exception> {
      * @throws E if an exception occurs
      * @since 1.0
      */
-    void accept(T t) throws E;
+    void accept(@Nullable T t) throws E;
 
     /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original

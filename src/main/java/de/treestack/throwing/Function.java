@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.Optional;
 
 /**
@@ -26,7 +28,7 @@ public interface Function<T, R, E extends Exception> {
      * @throws E if an exception occurs
      * @since 1.0
      */
-    R apply(T t) throws E;
+    @Nullable R apply(@Nullable T t) throws E;
 
     /**
      * Lifts a function that may throw an exception into a function that returns an Optional.

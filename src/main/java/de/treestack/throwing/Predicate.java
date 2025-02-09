@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * Represents a predicate (boolean-valued function) of one argument that might throw an exception.
  *
@@ -21,7 +23,7 @@ public interface Predicate<T, E extends Exception> {
      * @throws E if an exception occurs
      * otherwise {@code false}
      */
-    boolean test(T t) throws E;
+    boolean test(@Nullable T t) throws E;
 
     /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original

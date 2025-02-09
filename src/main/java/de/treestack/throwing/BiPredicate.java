@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * Represents a predicate (boolean-valued function) of two arguments that might throw an exception.
  * This is the two-arity specialization of {@link Predicate}.
@@ -24,7 +26,7 @@ public interface BiPredicate<T1, T2, E extends Exception> {
      * @throws E if an exception occurs
      * otherwise {@code false}
      */
-    boolean test(T1 t1, T2 t2) throws E;
+    boolean test(@Nullable T1 t1, @Nullable T2 t2) throws E;
 
     /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original

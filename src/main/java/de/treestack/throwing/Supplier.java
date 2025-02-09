@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.Optional;
 
 /**
@@ -24,7 +26,7 @@ public interface Supplier<R, E extends Exception> {
      * @throws E if an exception occurs
      * @since 1.0
      */
-    R get() throws E;
+    @Nullable R get() throws E;
 
     /**
      * Lifts a function that may throw an exception into a function that returns an Optional.

@@ -1,5 +1,7 @@
 package de.treestack.throwing;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * Represents an operation that accepts two input arguments, returns no
  * result and (optionally) throws an Exception.
@@ -26,7 +28,7 @@ public interface BiConsumer<T1, T2, E extends Exception> {
      * @throws E if an exception occurs
      * @since 1.0
      */
-    void accept(T1 t1, T2 t2) throws E;
+    void accept(@Nullable T1 t1, @Nullable T2 t2) throws E;
 
     /**
      * Wraps a function that may throw an exception into a function that will throw a RuntimeException if the original
