@@ -56,7 +56,7 @@ To use this library, add the following dependency to your project:
 <dependency>
     <groupId>de.treestack</groupId>
     <artifactId>throwing</artifactId>
-    <version>1.1.1</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -64,7 +64,7 @@ To use this library, add the following dependency to your project:
 
 ```kotlin
 dependencies {
-    implementation("de.treestack:throwing:1.1.1")
+    implementation("de.treestack:throwing:1.2.0")
 }
 ```
 
