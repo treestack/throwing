@@ -32,19 +32,21 @@ Stream.of("foo", "bar")
 
 This project provides a set of functional interfaces that support checked exceptions, allowing for cleaner and more readable code.
 
+⚠ Note: Before reading further, if your project uses a fairly recent version of Spring, check the `org.springframework.util.function` package. It contains similar classes with overlapping functionality, which might eliminate the need for an additional dependency.
+
 ## Status
 
 The following functional interfaces are currently provided by this project:
 
-- `BiConsumer`
-- `BiFunction`
-- `BinaryOperator`
-- `BiPredicate`
-- `Consumer`
-- `Function`
-- `Predicate`
-- `Supplier`
-- `UnaryOperator`
+- [`BiConsumer`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/BiConsumer.java)
+- [`BiFunction`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/BiFunction.java)
+- [`BinaryOperator`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/BinaryOperator.java)
+- [`BiPredicate`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/BiPredicate.java)
+- [`Consumer`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/Consumer.java)
+- [`Function`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/Function.java)
+- [`Predicate`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/Predicate.java)
+- [`Supplier`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/Supplier.java)
+- [`UnaryOperator`](https://github.com/treestack/throwing/blob/main/src/main/java/de/treestack/throwing/UnaryOperator.java)
 
 ## Installation
 
