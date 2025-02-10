@@ -170,6 +170,7 @@
                     <tagNameFormat>@{project.version}</tagNameFormat>
                     <releaseProfiles>release</releaseProfiles>
                     <projectVersionPolicyId>SemVerVersionPolicy</projectVersionPolicyId>
+                    <scmCommentPrefix>[skip ci]</scmCommentPrefix>
                 </configuration>
             </plugin>
             <plugin>
